@@ -9,7 +9,7 @@ conda env create -f environment.yml
 
 For more information on conda environments here is a link. https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html
 
-To run my assessment you would just need to write this command:
+To run my assessment you would just need to write this command after you are located in the scripts directory:
 
 python assessment_process.py
 
