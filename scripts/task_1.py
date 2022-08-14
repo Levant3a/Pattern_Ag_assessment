@@ -25,29 +25,41 @@ def read_in_crop_data():
     """
     file_path = get_root_path() + '/inputs/crop.csv'
     crop_data = pd.read_csv(file_path)
+    return crop_data
+
+
+def quick_filter(crop):
+    """
+    used to filter crop data for year user input wants
+    :param crop:
+    :return:
+    """
     inp = input("Would you like to filter the data by year? [Y/N]: ")
-    if inp.upper() in ['Y','YES']:
+    if inp.upper() in ['Y', 'YES']:
         inp = input("What year would you like?: ")
         year_filter = int(inp)
-        crop_filtered = crop_data[crop_data['year']==year_filter].copy()
+        crop_filtered = crop[crop['year'] == year_filter].copy()
         crop_filtered = crop_filtered.drop(['year'], axis=1)
-        return crop_filtered, year_filter
-    return crop_data, ''
-
-def output_crop_data(crop, year):
-    """
-    To read output target crop data
-    """
-    if year != '':
-        file_name = f'crop_{year}.csv'
     else:
-        file_name = f'crop.csv'
-    out_path = get_root_path() + f'/outputs/{file_name}'
+        print("Im going to filter for 2021 anyways")
+        crop_filtered = crop[crop['year'] == 2021].copy()
+        crop_filtered = crop_filtered.drop(['year'], axis=1)
+    return crop_filtered
+
+
+def output_crop_data(crop):
+    """
+    To output target crop data
+    """
+    out_path = get_root_path() + f'/outputs/task_1.csv'
     crop.to_csv(out_path, index= False)
+
 
 def task_1_process():
     """
     wrapper function to read in crop data and write out target crop data
     """
-    crop_df, yr_filter = read_in_crop_data()
-    output_crop_data(crop_df, yr_filter)
+    crop_df = read_in_crop_data()
+    crop_df = quick_filter(crop_df)
+    output_crop_data(crop_df)
+    return crop_df

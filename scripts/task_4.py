@@ -19,8 +19,8 @@ Please save as a csv file with the following headers: field_id, precip, min_temp
 
 import pandas as pd
 import os
-import datetime
 import task_1
+import requests
 
 def get_root_path():
     """
@@ -64,19 +64,48 @@ def get_agg_req(weather):
     weather.rename(columns={'temp':'min_temp'},inplace=True)
     return weather
 
+def get_lat_and_long(row):
+    """
+    this function is to get lat and lon from field_geometry
+    :param row:
+    :return:
+    """
+    field_geometry = row['field_geometry']
+    field_geometry = field_geometry.split(',')
+    row['lat'] = field_geometry[int(len(field_geometry)/2)][0]
+    row['lon'] = field_geometry[int(len(field_geometry) / 2)][1]
+    return row
+
 def get_field_id(weather):
     """
     todo need to find way to read from url and pull
     :param weather:
     :return:
     """
+    crop = task_1.read_in_crop_data()
+    crop = crop[crop['year']==2021]
+    crop['lat'] = None
+    crop['lon'] = None
+    crop = crop.apply(lambda row: get_lat_and_long(row),axis=1)
     return weather
 
-def write_out(weather):
+
+def output_weather_data(weather):
+    """
+    to output task 4 weather data
+    :param weather:
+    """
     out_path = get_root_path() + f'/outputs/task_4.csv'
     weather.to_csv(out_path, index=False)
 
 def task_4_process():
+    """
+    This wrapper function runs task 4. Could not get the field figure out the field id
+    so I am just returning what I have
+    :return:
+    """
     w = read_in_weather_data()
     w = quick_data_filter(w)
     w = get_agg_req(w)
+    # w = get_field_id()
+    output_weather_data(w)
