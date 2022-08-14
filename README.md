@@ -23,13 +23,13 @@ task_3.py
 task_4.py
 
 Notes: 
-I went a little to long on the exploration and set up I could not completely finish task_4.py
-I just started trying to parse through the crops field_geometry column and tried to get the center of the string for each row.
-That would have allowed me to get the lat and lon for the lookup to the provided url for the fips_code mapping
+I went a little to long on the exploration and set up I could not completely finish task_4.py //
+I just started trying to parse through the crops field_geometry column and tried to get the center of the string for each row.//
+That would have allowed me to get the lat and lon for the lookup to the provided url for the fips_code mapping//
 
-Task 3 I was confused on the calculation so I just assumed how it would be done
- comppct * om * hlw /100 for om
- comppct * cec * hlw /100 for cec
- comppct * ph * hlw /100 for ph
+Task 3 I was confused on the calculation so I just assumed how it would be done//
+ comppct * om * hlw /100 for om//
+ comppct * cec * hlw /100 for cec//
+ comppct * ph * hlw /100 for ph//
 
 If given more time I would have liked to complete task_4 and done more cleanup.
