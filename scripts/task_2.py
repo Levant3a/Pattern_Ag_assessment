@@ -72,6 +72,10 @@ def output_spectral_data(spectral):
 
 
 def task_2_process():
+    """
+   wrapper function to run task_3
+   :return:
+   """
     s = read_in_spectral_data()
     s = quick_data_process(s)
     s = get_nvdi(s)

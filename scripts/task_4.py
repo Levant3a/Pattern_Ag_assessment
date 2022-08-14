@@ -67,6 +67,7 @@ def get_agg_req(weather):
 def get_lat_and_long(row):
     """
     this function is to get lat and lon from field_geometry
+    #todo continue trying to get lat and lon
     :param row:
     :return:
     """

@@ -69,6 +69,10 @@ def output_soil_data(soil):
 
 
 def task_3_process():
+    """
+    wrapper function to run task_3
+    :return:
+    """
     s = read_in_soil_data()
     s = get_horizontal_layer_weights(s)
     s = get_weighted_avg_of_comp(s)
