@@ -33,3 +33,9 @@ Task 3 I was confused on the calculation so I just assumed how it would be done
  comppct * col * hlw /100 for col in om, cec, ph
 
 If given more time I would have liked to complete task_4 and done more cleanup.
+
+when running the assessment_process.py script
+
+there will be a user input that is needed for the sake of the assessment please input 'Y' then for the next request 2021
+
+Or just 'N' is fine as well
